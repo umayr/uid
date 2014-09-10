@@ -4,15 +4,15 @@
  * Module Dependencies
  */
 
- var uid = require('..'),
-     len = process.argv[2],
-     out;
+var uid = require('..'),
+    args = process.argv.slice(2),
+    len = args[0],
+    out;
 
-if (!len) {
-  out = 'Usage: $ uid <len>';
+if (!isNaN(parseFloat(len)) && isFinite(len)) {
+    out = uid(len);
 } else {
-  out = uid(len);
+    out = 'Invalid argument \nUsage: $ uid <len>';
 }
 
 console.log(out);
-
